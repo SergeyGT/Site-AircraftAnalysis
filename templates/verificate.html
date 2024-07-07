@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: white; /* Добавим белый цвет для заголовков */
+        }
+        body {
+            background: linear-gradient(-45deg, #B2C9E3, #82D8D8, #9ABBE0, #87AEE0, #759FE0, #638FE0, #5180E0, #3E71E0, #2C62E0, #1943E0, #0724E0);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        /* Анимация для смещения градиента */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .jumbotron {
+            background-color: transparent; /* Сделаем фон прозрачным, чтобы увидеть градиент body */
+        }
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #FF7514;
+        }
+         .home-button:hover {
+
+            background-color: #715200;
+        }
+        .table
+        {background-color: e9e9e9;
+        padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<a href="/" class="btn btn-primary home-button">Домой</a>
+   <div class="container">
+    <h1 class="mt-5 mb-4">Подсистема сверки и выявления закономерностей</h1>
+    <div class="row">
+        {% for report in analysis_reports %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ report.model_id }}</h5>
+                    <p class="card-text"><strong>Отклонения:</strong> {{ report.deviation_from_optimal }}</p>
+                    <p class="card-text"><strong>Анализ тенденций:</strong> {{ report.trend_analysis }}</p>
+                    <p class="card-text"><strong>Рекомендации:</strong> {{ report.recommendations }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <!-- Подключаем скрипты Bootstrap и jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

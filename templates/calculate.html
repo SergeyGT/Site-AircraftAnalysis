@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(-45deg, #B2C9E3, #82D8D8, #9ABBE0, #87AEE0, #759FE0, #638FE0, #5180E0, #3E71E0, #2C62E0, #1943E0, #0724E0);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .jumbotron {
+            background-color: transparent;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #FF7514;
+        }
+
+        .home-button:hover {
+            background-color: #715200;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="btn btn-primary home-button">Домой</a>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Модели обслуживания</h1>
+        <ul class="list-group">
+            {% for model in models %}
+            <li class="list-group-item">
+                <strong>{{ model.model_name }}</strong> - {{ model.model_description }}
+                <br>
+                <button class="btn btn-primary mt-2" onclick="showOptimalParameters({{ model.model_id }})">Рассчитать оптимальные параметры работы данной модели</button>
+                <div id="optimal-parameters-{{ model.model_id }}" class="mt-2" style="display: none;">
+                    <em>Оптимальные параметры: {{ model.optimal_parameters }}</em>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Подключаем скрипты Bootstrap и jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showOptimalParameters(modelId) {
+            var button = document.querySelector(`#optimal-parameters-${modelId}`).previousElementSibling;
+            button.style.display = 'none';
+            var paramsDiv = document.getElementById(`optimal-parameters-${modelId}`);
+            paramsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

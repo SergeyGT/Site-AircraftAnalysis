@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добро пожаловать!</title>
+    <!-- Подключение библиотеки Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Дополнительные стили для кнопок */
+        .list-group-item a {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .list-group-item a:hover {
+            transform: scale(1.05);
+        }
+        body {
+            background: linear-gradient(-45deg, #B2C9E3, #82D8D8, #9ABBE0, #87AEE0, #759FE0, #638FE0, #5180E0, #3E71E0, #2C62E0, #1943E0, #0724E0);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        /* Анимация для смещения градиента */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .jumbotron
+        {
+<!--            background-color: #F5F5F5-->
+
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+    </style>
+</head>
+<body>
+     <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Добро пожаловать на наш проект!</h1>
+            <p class="lead">Это главная страница нашего проекта.</p>
+            <p>Здесь вы можете найти информацию о различных подсистемах и функциях проекта.</p>
+            <hr class="my-4">
+            <h2>Подсистемы проекта:</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><a class="btn btn-primary" href="/calculation">Подсистема расчёта моделей обслуживания</a></li>
+                <li class="list-group-item"><a class="btn btn-primary" href="/verification">Подсистема сверки и выявления закономерностей</a></li>
+                <li class="list-group-item"><a class="btn btn-primary" href="/reports">Подсистема отчетности</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- Подключение библиотеки Bootstrap JS (необходима для работы интерактивных компонентов) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

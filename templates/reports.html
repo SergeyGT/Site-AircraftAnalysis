@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчеты о техническом обслуживании</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+             background: linear-gradient(-45deg, #B2C9E3, #82D8D8, #9ABBE0, #87AEE0, #759FE0, #638FE0, #5180E0, #3E71E0, #2C62E0, #1943E0, #0724E0);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            padding-top: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FF7514; /* Цвет кнопки */
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        select:hover {
+            background-color: #715200; /* Цвет кнопки при наведении */
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FF7514; /* Цвет кнопки */
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #715200; /* Цвет кнопки при наведении */
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #FF7514; /* Цвет заголовка таблицы */
+            color: #fff;
+            font-weight: bold;
+        }
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #FF7514;
+        }
+         .home-button:hover {
+
+            background-color: #715200;
+        }
+        td {
+            background-color: #fff; /* Цвет фона ячеек таблицы */
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: white; /* Добавим белый цвет для заголовков */
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: white; /* Добавим белый цвет для заголовков */
+        }
+    </style>
+</head>
+<body>
+<a href="/" class="btn btn-primary home-button">Домой</a>
+    <h1>Отчеты о техническом обслуживании</h1>
+
+    <form method="POST">
+        <select name="maintenance_type">
+            <option value="Техническое обслуживание">Техническое обслуживание</option>
+            <option value="плановое ТО">Плановое ТО</option>
+            <option value="ремонт">Ремонт</option>
+            <option value="Регулярное обслуживание">Регулярное обслуживание</option>
+        </select>
+        <button type="submit">Показать</button>
+    </form>
+
+    {% if maintenance_records %}
+        <h2>Информация о техническом обслуживании:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата обслуживания</th>
+                    <th>Тип обслуживания</th>
+                    <th>Описание</th>
+                    <th>Стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in maintenance_records %}
+                    <tr>
+                        <td>{{ record.maintenance_date }}</td>
+                        <td>{{ record.maintenance_type }}</td>
+                        <td>{{ record.maintenance_description }}</td>
+                        <td>{{ record.maintenance_cost }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>
